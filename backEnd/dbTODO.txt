@@ -1,0 +1,36 @@
+when clicking on products, load a JSON object with all the objects, like an API
+
+In the products model, have: 
+    picture 
+    title
+    price
+    condition
+    seller info
+    availability
+    return policy?
+
+IN OTHER WORDS:
+1. figure out database stuff and have a product model with the attributes above
+2. figure out how to return a JSON object when you go to the /products route, like an API
+
+As far as inserting web scraper stuff into SQLite:
+    can have webscraper return HTML 
+
+TO INITALIZE THE SITE.DB FILE MANUALLY VIA THE CMDLINE:
+    cd backEnd
+    python
+    from app import db
+    db.create_all()
+    from app import Product
+    product_1 = Product(title='Keyboard', price = 100, condition = 'new')
+    db.session.add(product_1)
+    product_2 = Product(title='Shoes', price = 200, condition = 'new')
+    db.session.add(product_2)
+    db.session.commit()
+    
+    This should create the site.db file. You can then query the products
+    (idk how to get them to show up on the webpage yet)
+
+    use db.drop_all() to create all the tables and rows
+
+
