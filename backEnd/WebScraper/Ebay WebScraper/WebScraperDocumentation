@@ -1,0 +1,5 @@
+The Webscraper is able to get all of the names of items from the website in WebScraperMain.
+However it only works for that site at the moment because it reads specific html from that site
+find_links in WebPageWebScraper would have to be modified for the html of a different site.
+
+There is only one method right now "website.item_name()"
