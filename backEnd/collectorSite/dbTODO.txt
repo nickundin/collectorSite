@@ -19,18 +19,23 @@ As far as inserting web scraper stuff into SQLite:
 TO INITALIZE THE SITE.DB FILE MANUALLY VIA THE CMDLINE:
     cd backEnd
     python
-    from app import db
+    from collectorSite import db
     db.create_all()
-    from app import Product
+    from collectorSite.models import Product
     product_1 = Product(title='Keyboard', price = 100, condition = 'new')
     db.session.add(product_1)
     product_2 = Product(title='Shoes', price = 200, condition = 'new')
     db.session.add(product_2)
     db.session.commit()
     
-    This should create the site.db file. You can then query the products
-    (idk how to get them to show up on the webpage yet)
+This should create the site.db file.
 
-    use db.drop_all() to create all the tables and rows
+To later access all the products, you can then use SQLAlchemy commands like
+    cd backEnd
+    python
+    from collectorSite import db
+    from collectorSite.models import Product
+    Product.query.all()
+    (idk how to get them to show up on the webpage yet)
 
 
