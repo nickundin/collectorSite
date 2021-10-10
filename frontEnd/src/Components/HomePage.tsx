@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function HomePage() {
+export default function HomePage(): JSX.Element {
     return (
         <div className="home">
-            <h2>Hello, world!</h2>
+            <h2>Home page to be</h2>
         </div>
     );
 }

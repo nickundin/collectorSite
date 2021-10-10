@@ -1,20 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import NotFoundPage from './Components/NotFoundPage';
-import HomePage from './Components/HomePage';
+import Routing from './Components/Routing';
 import './App.css';
 
-export default function App() {
+// Row is being tested, MUST BE MOVED TO ITS CORRESPONDING PAGE
+// COMPONENT LATER ON
+// Navbar will NOT change on load so it must be above routing
+export default function App(): JSX.Element {
   return (
     <div className="App">
-          React Routing -- No reload every time page changes.
-          Currently a test, will likely move to Routing component.
-          <Router>
-            <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route component={NotFoundPage} />
-            </Switch>
-          </Router>
+          Header / Navbar goes here
+          <Routing/>
     </div>
   );
 }
