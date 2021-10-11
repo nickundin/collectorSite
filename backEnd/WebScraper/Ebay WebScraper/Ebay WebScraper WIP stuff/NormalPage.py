@@ -3,6 +3,7 @@ import requests
 import time
 import concurrent.futures
 
+
 # take in product page link, return beautifulsoup object
 def turn_to_soup(input_url):
     time.sleep(1)

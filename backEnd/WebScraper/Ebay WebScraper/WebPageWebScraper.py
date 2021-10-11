@@ -7,18 +7,13 @@ import TabsPage
 class PageParser:
     def __init__(self, url):
         self.url = url
-        self.pages = []
-        self.links = []
 
     # returns all the pages of items with the last item being the original url
     def find_pages(self, url):
         return_array = []
-        for page in range(1, 2):
+        for page in range(1, 10):
             url = url + "?_pgn=" + str(page)
             return_array.append(url)
-        original_url = url.split('/')
-        return_array.append("https://" + original_url[2])
-        self.pages = return_array
         return return_array
 
     # returns all the links to items on the page
@@ -29,14 +24,11 @@ class PageParser:
             soup = BeautifulSoup(html, 'lxml')
             for item in soup.findAll('a', class_="s-item__link"):
                 return_string.append(item['href'])
-        self.links = return_string
         return return_string
 
     # returns links to all individual items on a site, calls the other methods in class
     def parse_pages(self):
         pages_of_site = PageParser.find_pages(self, self.url)
-        original_url = pages_of_site[-1]
-        pages_of_site = pages_of_site[:-1]
         page_links = PageParser.find_links(self, pages_of_site)
         return page_links
 
@@ -49,12 +41,12 @@ class PageParser:
             if soup.find("ul", class_="themes-panel") is not None \
                     or soup.find("div", class_="app-mtp-theme-tabs") is not None:
                 print("tabs page")
-                product_attributes = TabsPage.item_attributes(link)
+                product_attributes = TabsPage.item_attributes(soup)
                 print(product_attributes)
                 return_array.append(product_attributes)
             else:
                 print("normal page")
-                product_attributes = NormalPage.item_attributes(link)
+                product_attributes = NormalPage.item_attributes(soup)
                 print(product_attributes)
                 return_array.append(product_attributes)
         return return_array
