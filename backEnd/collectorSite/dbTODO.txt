@@ -15,3 +15,5 @@ IN OTHER WORDS:
 
 As far as inserting web scraper stuff into SQLite:
     can have webscraper return HTML 
+
+FOR EACH PRODUCT, THE WEBSCRAPER RETURNS A DICTIONARY OF EACH OF ITS ATTRIBUTES

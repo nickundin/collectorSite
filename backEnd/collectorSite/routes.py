@@ -1,6 +1,15 @@
 from flask import render_template
-from collectorSite import app
+from collectorSite import app, db
 from collectorSite.models import Product
+
+# insert the code to create products from the webscraper here
+# db.drop_all()
+# db.create_all()
+# products = []
+# for product in products:
+#     product_1 = Product(title='Keyboard', price = 100, condition = 'new') # modify this to read attributes from a dictionary
+#     db.session.add(product_1)
+#     db.session.commit()
 
 # gets the actual products from the database
 products = Product.query.all()
