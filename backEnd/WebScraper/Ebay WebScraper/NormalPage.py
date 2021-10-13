@@ -5,7 +5,7 @@ import concurrent.futures
 
 # take in product page link, return beautifulsoup object
 def turn_to_soup(input_url):
-    time.sleep(1)
+    time.sleep(0.0005)
     html = requests.get(input_url)
     return BeautifulSoup(html.text, 'lxml')
 
@@ -70,11 +70,15 @@ def item_return_policy(soup):
         return soup.find("td", class_="rpWrapCol").find("span").text
 
 
+def item_link(link):
+    return link
+
+
 # returns a dictionary with all of the attributes of the product
-def item_attributes(soup):
+def item_attributes(soup, link):
     product = {"item_name": item_name(soup), "item_image": item_image(soup),
                "item_price": item_price(soup), "item_condition": item_condition(soup),
                "item_seller": item_seller(soup), "item_availability": item_availability(soup),
-               "item_return_policy": item_return_policy(soup)}
+               "item_return_policy": item_return_policy(soup), "item_link": item_link(link)}
     return product
 

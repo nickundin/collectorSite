@@ -9,9 +9,9 @@ class PageParser:
         self.url = url
 
     # returns all the pages of items with the last item being the original url
-    def find_pages(self, url):
+    def find_pages(self, url, pages):
         return_array = []
-        for page in range(1, 10):
+        for page in range(1, pages):
             url = url + "?_pgn=" + str(page)
             return_array.append(url)
         return return_array
@@ -27,26 +27,26 @@ class PageParser:
         return return_string
 
     # returns links to all individual items on a site, calls the other methods in class
-    def parse_pages(self):
-        pages_of_site = PageParser.find_pages(self, self.url)
+    def parse_pages(self, pages):
+        pages_of_site = PageParser.find_pages(self, self.url, pages)
         page_links = PageParser.find_links(self, pages_of_site)
         return page_links
 
     # returns attributes of each item on the website
-    def parse_all(self):
+    def parse_all(self, pages):
         return_array = []
-        for link in PageParser.parse_pages(self):
+        for link in PageParser.parse_pages(self, pages):
             print(link)
             soup = NormalPage.turn_to_soup(link)
             if soup.find("ul", class_="themes-panel") is not None \
                     or soup.find("div", class_="app-mtp-theme-tabs") is not None:
                 print("tabs page")
-                product_attributes = TabsPage.item_attributes(soup)
+                product_attributes = TabsPage.item_attributes(soup, link)
                 print(product_attributes)
                 return_array.append(product_attributes)
             else:
                 print("normal page")
-                product_attributes = NormalPage.item_attributes(soup)
+                product_attributes = NormalPage.item_attributes(soup, link)
                 print(product_attributes)
                 return_array.append(product_attributes)
         return return_array

@@ -43,9 +43,13 @@ def item_return_policy(soup):
         return string
 
 
-def item_attributes(soup):
+def item_link(link):
+    return link
+
+
+def item_attributes(soup, link):
     product = {"item_name": item_name(soup), "item_image": item_image(soup),
                "item_price": item_price(soup), "item_condition": item_condition(soup),
                "item_seller": item_seller(soup), "item_availability": item_availability(soup),
-               "item return_policy": item_return_policy(soup)}
+               "item_return_policy": item_return_policy(soup), "item_link": item_link(link)}
     return product
