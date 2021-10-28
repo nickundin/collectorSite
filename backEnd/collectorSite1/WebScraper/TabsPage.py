@@ -1,4 +1,3 @@
-
 # get the name of the item
 def item_name(soup):
     return soup.find("h1", class_="product-title").text
