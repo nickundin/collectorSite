@@ -4,12 +4,19 @@
 from flask import render_template
 from collectorSite import app, db
 from collectorSite.models import Product
+from collectorSite.WebScraper.WebPageWebScraper import PageParser
 
 # resets the database
 db.drop_all()
 db.create_all()
 
-products = [] # how I get the return of the webscraper from here? should be a list of dictionaries TODO
+website = PageParser("https://www.ebay.com/b/Collectible-Funko-Bobbleheads-1970-Now/149372/bn_3017826")
+products = website.parse_all(2)
+print("NOW PRINTING PRODUCTS")
+print(products)
+print("NOW FINISHED")
+# products = [] # how I get the return of the webscraper from here? should be a list of dictionaries TODO
+
 for product in products:
         # assigns the values of a given product dictionary to variables using the key
         theTitle = product['item_name']
