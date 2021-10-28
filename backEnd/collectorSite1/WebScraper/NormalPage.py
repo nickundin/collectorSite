@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import time
-import concurrent.futures
+
 
 # take in product page link, return beautifulsoup object
 def turn_to_soup(input_url):
@@ -81,4 +81,3 @@ def item_attributes(soup, link):
                "item_seller": item_seller(soup), "item_availability": item_availability(soup),
                "item_return_policy": item_return_policy(soup), "item_link": item_link(link)}
     return product
-
