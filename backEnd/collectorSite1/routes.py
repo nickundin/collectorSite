@@ -1,10 +1,7 @@
-# import sys
-# sys.path.append('../WebScraper/Ebay WebScraper')
-
 from flask import render_template
-from collectorSite import app, db
-from collectorSite.models import Product
-from collectorSite.WebScraper.WebPageWebScraper import PageParser
+from collectorSite1 import app, db
+from collectorSite1.models import Product
+from collectorSite1.WebScraper.WebPageWebScraper import PageParser
 
 # resets the database
 db.drop_all()
@@ -15,7 +12,6 @@ products = website.parse_all(2)
 print("NOW PRINTING PRODUCTS")
 print(products)
 print("NOW FINISHED")
-# products = [] # how I get the return of the webscraper from here? should be a list of dictionaries TODO
 
 for product in products:
         # assigns the values of a given product dictionary to variables using the key
@@ -28,7 +24,8 @@ for product in products:
         theReturnPolicy = product['item_return_policy'] # wait for push
         
         # creates a new product using the values and adds newProduct to the database
-        newProduct = Product(theTitle, theImage, thePrice, theCondition, theSellerInfo, theAvailability, theReturnPolicy)
+        # this is super ugly but it works for now, FIX LATER TODO
+        newProduct = Product(title=theTitle, image=theImage, price=thePrice, condition=theCondition, sellerInfo=theSellerInfo, availability=theAvailability, returnPolicy=theReturnPolicy) # doesn't work
         db.session.add(newProduct)
         db.session.commit()
 

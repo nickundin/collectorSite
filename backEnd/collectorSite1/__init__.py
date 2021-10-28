@@ -6,4 +6,4 @@ app = Flask(__name__, template_folder='../../frontEnd/templates')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
-from collectorSite import routes # DO NOT REMOVE
+from collectorSite1 import routes # DO NOT REMOVE

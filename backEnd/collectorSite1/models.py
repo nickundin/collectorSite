@@ -1,4 +1,4 @@
-from collectorSite import db
+from collectorSite1 import db
 
 
 class Product(db.Model):

@@ -1,11 +1,8 @@
 from bs4 import BeautifulSoup
-import NormalPage
-import collectorSite.WebScraper.NormalPage as NormalPage
-# import NormalPage
-# import TabsPage
+import collectorSite1.WebScraper.NormalPage as NormalPage
 import requests
-import collectorSite.WebScraper.OtherPage as OtherPage
-import collectorSite.WebScraper.TabsPage as TabsPage
+import collectorSite1.WebScraper.OtherPage as OtherPage
+import collectorSite1.WebScraper.TabsPage as TabsPage
 
 
 class PageParser:
