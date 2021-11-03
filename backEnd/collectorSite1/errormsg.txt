@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\Nick\collectorSite\backEnd\run.py", line 2, in <module>
+    from collectorSite import app
+  File "C:\Users\Nick\collectorSite\backEnd\collectorSite\__init__.py", line 9, in <module>
+    from collectorSite import routes # DO NOT REMOVE
+  File "C:\Users\Nick\collectorSite\backEnd\collectorSite\routes.py", line 17, in <module>
+    products = WebScraperMain.website.parse_all() # how I get the return of the webscraper from here? should be a list of dictionaries TODO
+  File "C:\Users\Nick\collectorSite\backEnd\WebScraper\Ebay\WebPageWebScraper.py", line 49, in parse_all
+    product_attributes = NormalPage.item_attributes(soup)
+  File "C:\Users\Nick\collectorSite\backEnd\WebScraper\Ebay\NormalPage.py", line 76, in item_attributes
+    "item_price": item_price(soup), "item_condition": item_condition(soup),
+  File "C:\Users\Nick\collectorSite\backEnd\WebScraper\Ebay\NormalPage.py", line 31, in item_price
+    return soup.find("span", class_="notranslate")["content"]
+TypeError: 'NoneType' object is not subscriptable
