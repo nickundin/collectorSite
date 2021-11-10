@@ -37,7 +37,7 @@ class PageParser:
     def parse_all(self, pages):
         return_array = []
         for link in PageParser.parse_pages(self, pages):
-            print(link)
+            # print(link)
             soup = NormalPage.turn_to_soup(link)
             # finds the type of page it is
             if soup.find("ul", class_="themes-panel") is not None \
@@ -52,7 +52,7 @@ class PageParser:
                 # print(product_attributes)
                 return_array.append(product_attributes)
             else:
-                print("normal page")
+                #print("normal page")
                 product_attributes = NormalPage.item_attributes(soup, link)
                 # print(product_attributes)
                 return_array.append(product_attributes)
