@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
-import collectorSite1.WebScraper.NormalPage as NormalPage
+import NormalPage as NormalPage
 import requests
-import collectorSite1.WebScraper.OtherPage as OtherPage
-import collectorSite1.WebScraper.TabsPage as TabsPage
+import OtherPage as OtherPage
+import TabsPage as TabsPage
 
 
 class PageParser:
@@ -42,12 +42,12 @@ class PageParser:
             # finds the type of page it is
             if soup.find("ul", class_="themes-panel") is not None \
                     or soup.find("div", class_="app-mtp-theme-tabs") is not None:
-                print("tabs page")
+                #print("tabs page")
                 product_attributes = TabsPage.item_attributes(soup, link)
                 # print(product_attributes)
                 return_array.append(product_attributes)
             elif soup.find("h1", class_="product-title") is not None:
-                print("Other Page")
+                #print("Other Page")
                 product_attributes = OtherPage.item_attributes(soup, link)
                 # print(product_attributes)
                 return_array.append(product_attributes)
